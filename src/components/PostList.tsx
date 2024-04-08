@@ -1,16 +1,33 @@
 import { Link } from "react-router-dom";
 import SmallProfile from "./SmallProfile";
+import { useState } from "react";
 
 interface PostListProps {
   hasNavigation?: boolean;
 }
 
+type TabType = "all" | "mypost";
+
 const PostList = ({ hasNavigation = true }: PostListProps) => {
+  const [activeTab, setActiveTab] = useState<TabType>("all");
   return (
     <>
       {hasNavigation && (
         <div className="post__navigation">
-          <div className="post__navigation--active"></div>
+          <div
+            role="presentation"
+            onClick={() => setActiveTab("all")}
+            className={activeTab === "all" ? "post__navigation--active" : ""}
+          >
+            전체
+          </div>
+          <div
+            role="presentation"
+            onClick={() => setActiveTab("mypost")}
+            className={activeTab === "mypost" ? "post__navigation--active" : ""}
+          >
+            나의 글
+          </div>
         </div>
       )}
       <div className="post-list">

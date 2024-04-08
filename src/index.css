@@ -67,6 +67,11 @@ footer a:focus {
   padding: 48px 20px 0px 20px;
 }
 
+.post__navigation--active {
+  color: black;
+  font-weight: 600;
+}
+
 /* post list, post detail */
 .post-list,
 .post__detail {
@@ -128,14 +133,25 @@ footer a:focus {
   color: gray;
 }
 
+.post__delete {
+  cursor: pointer;
+}
+
 .post__delete:hover,
 .post__delete:focus {
   color: black;
 }
 
 .post__edit:hover,
-.post__edit:focus {
+.post__edit:focus,
+.post__edit a:hover,
+.post__edit a:focus {
   color: black;
+}
+
+.post__edit a {
+  text-decoration: none;
+  color: gray;
 }
 
 /* post detail */
