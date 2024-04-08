@@ -1,10 +1,10 @@
+import PostPage from "pages/detail";
+import PostEdit from "pages/edit";
+import Home from "pages/home";
+import PostNew from "pages/new";
+import Posts from "pages/posts";
+import ProfilePage from "pages/profile";
 import { Navigate, Route, Routes } from "react-router-dom";
-import PostPage from "../pages/detail";
-import PostEdit from "../pages/edit";
-import Home from "../pages/home";
-import PostNew from "../pages/new";
-import Posts from "../pages/posts";
-import ProfilePage from "../pages/profile";
 
 const Router = () => {
   return (

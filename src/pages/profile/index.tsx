@@ -1,7 +1,7 @@
-import Footer from "../../components/Footer";
-import Header from "../../components/Header";
-import LargeProfile from "../../components/LargeProfile";
-import PostList from "../../components/PostList";
+import Footer from "components/Footer";
+import Header from "components/Header";
+import LargeProfile from "components/LargeProfile";
+import PostList from "components/PostList";
 
 const ProfilePage = () => {
   return (
