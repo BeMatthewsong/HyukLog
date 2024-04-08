@@ -35,7 +35,7 @@ const Carousel = () => {
           />
         ))}
         <div className="carousel__dots">
-          {[...Array(3)].map((_, index) => (
+          {imageDatas.map((_, index) => (
             <label
               onClick={() => setActiveImage(index)}
               className="carousel__dot"
