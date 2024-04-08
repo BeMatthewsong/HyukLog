@@ -1,6 +1,6 @@
-import Footer from "components/Footer";
-import Header from "components/Header";
-import PostDetail from "components/PostDetail";
+import Footer from "src/components/Footer";
+import Header from "src/components/Header";
+import PostDetail from "src/components/PostDetail";
 
 const PostPage = () => {
   return (

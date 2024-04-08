@@ -1,10 +1,12 @@
-import PostPage from "pages/detail";
-import PostEdit from "pages/edit";
-import Home from "pages/home";
-import PostNew from "pages/new";
-import Posts from "pages/posts";
-import ProfilePage from "pages/profile";
 import { Navigate, Route, Routes } from "react-router-dom";
+import PostPage from "src/pages/detail";
+import Home from "src/pages/home";
+import Posts from "src/pages/posts";
+import PostEdit from "src/pages/posts/edit";
+import PostNew from "src/pages/posts/new";
+import ProfilePage from "src/pages/profile";
+import SignIn from "src/pages/signin";
+import SignUp from "src/pages/signup";
 
 const Router = () => {
   return (
@@ -15,6 +17,8 @@ const Router = () => {
       <Route path="/posts/new" element={<PostNew />} />
       <Route path="/posts/edit:id" element={<PostEdit />} />
       <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/login" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
       <Route path="/*" element={<Navigate replace to="/" />} />
     </Routes>
   );
