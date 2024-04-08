@@ -322,7 +322,7 @@ ul.carousel__slides input {
 input:checked + .carousel__slide-container .carousel__slide-img {
   opacity: 1;
   transform: scale(1);
-  transition: opacity 1s ease-in-out;
+  transition: opacity 1.2s ease-in-out;
 }
 
 input:checked + .carousel__slide-container .carousel__controls label {
