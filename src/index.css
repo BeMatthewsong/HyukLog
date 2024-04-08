@@ -39,3 +39,93 @@ footer {
 .post-list {
   min-height: 90vh;
 }
+
+footer a {
+  margin: 0px 10px;
+  text-decoration: none;
+  color: gray;
+}
+
+footer a:hover,
+footer a:focus {
+  color: black;
+}
+
+/* post navigation */
+.post__navigation {
+  display: flex;
+  gap: 12px;
+  margin: 0 auto;
+  font-size: 16px;
+  color: gray;
+  cursor: pointer;
+  padding: 48px 20px 0px 20px;
+}
+
+/* post list */
+.post-list {
+  min-height: 90vh;
+  padding: 20px;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 24px;
+}
+
+.post-list a {
+  text-decoration: none;
+  color: black;
+}
+
+.post__profile-box {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  align-items: center;
+}
+
+.post__box {
+  padding: 24px 0px;
+  border-top: 1px solid #f2f2f2;
+}
+
+.post__profile {
+  width: 36px;
+  height: 36px;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+}
+
+.post__date,
+.post__author-name {
+  color: gray;
+}
+
+.post__title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 14px 0px;
+}
+
+.post__text {
+  color: dimgray;
+  font-size: 16px;
+}
+
+.post__utils-box {
+  display: flex;
+  gap: 8px;
+  flex-direction: row-reverse;
+  font-size: 14px;
+  color: gray;
+}
+
+.post__delete:hover,
+.post__delete:focus {
+  color: black;
+}
+
+.post__edit:hover,
+.post__edit:focus {
+  color: black;
+}
