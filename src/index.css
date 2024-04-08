@@ -4,10 +4,15 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-direction: row-reverse;
   border-bottom: 1px solid #f2f2f2;
   padding: 10px 40px;
   min-height: 40px;
+}
+
+header .header__logo {
+  color: black;
+  font-weight: 800;
+  font-size: 18px;
 }
 
 header a {
@@ -62,8 +67,9 @@ footer a:focus {
   padding: 48px 20px 0px 20px;
 }
 
-/* post list */
-.post-list {
+/* post list, post detail */
+.post-list,
+.post__detail {
   min-height: 90vh;
   padding: 20px;
   text-align: left;
@@ -82,6 +88,7 @@ footer a:focus {
   gap: 8px;
   font-size: 14px;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .post__box {
@@ -110,6 +117,7 @@ footer a:focus {
 .post__text {
   color: dimgray;
   font-size: 16px;
+  padding-top: 10px;
 }
 
 .post__utils-box {
@@ -128,4 +136,73 @@ footer a:focus {
 .post__edit:hover,
 .post__edit:focus {
   color: black;
+}
+
+/* post detail */
+.post__detail .post.__title {
+  font-size: 36px;
+  line-height: 40px;
+}
+
+.post__detail .post__utils-box {
+  padding: 10px 0px;
+  border-top: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  flex-direction: row;
+}
+
+.post__detail .post.__profile-box {
+  padding: 10px 0px;
+}
+
+.post__detail .post.__text {
+  padding: 20px 0px;
+}
+
+/* profile */
+
+.profile__box {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  font-size: 18px;
+  margin: 0 auto;
+  max-width: 600px;
+  text-align: left;
+  justify-content: space-between;
+  line-height: 24px;
+  padding: 20px;
+}
+
+.flex__box-lg {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.profile__image {
+  width: 72px;
+  height: 72px;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+}
+
+.profile__email {
+  font-weight: 500;
+}
+
+.profile__name {
+  font-size: 16px;
+  padding-top: 4px;
+}
+
+.profile__logout {
+  color: gray;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.profile__logout:hover,
+.profile__logout:focus {
+  color: red;
 }
