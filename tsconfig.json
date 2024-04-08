@@ -25,6 +25,7 @@
   "paths": {
     "components/*": ["src/components/*"],
     "pages/*": ["src/pages/*"],
+    "firebasApp/*": ["firebasApp/*"],
     "@/*": ["src/*"]
   },
   "references": [{ "path": "./tsconfig.node.json" }]
