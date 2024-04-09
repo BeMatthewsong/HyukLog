@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { app } from "src/firebasApp";
+import { toast } from "react-toastify";
 
 type Input = {
   email: string;
@@ -10,7 +11,7 @@ type Input = {
 };
 
 const SignUpForm = () => {
-  const [error, setError] = useState<string>("");
+  // const [error, setError] = useState<string>("");
   const [input, setInput] = useState<Input>({
     email: "",
     password: "",
@@ -22,8 +23,10 @@ const SignUpForm = () => {
     try {
       const auth = getAuth(app);
       await createUserWithEmailAndPassword(auth, input.email, input.password);
+      toast.success("회원가입에 성공했습니다.");
     } catch (error) {
       console.log(error);
+      toast.error("중복된 이메일이 있습니다.");
     }
   };
 
@@ -92,7 +95,7 @@ const SignUpForm = () => {
           type="submit"
           value="로그인"
           className="form__btn--submit"
-          disabled={error?.length > 0}
+          // disabled={error?.length > 0}
         />
       </div>
     </form>
