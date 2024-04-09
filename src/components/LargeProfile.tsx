@@ -1,9 +1,11 @@
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "src/firebasApp";
 import { toast } from "react-toastify";
+import AuthContext from "src/contexts/AuthContext";
+import { useContext } from "react";
 
 const LargeProfile = () => {
-  const auth = getAuth(app);
+  const { user } = useContext(AuthContext);
 
   const handleClick = async () => {
     try {
@@ -12,7 +14,7 @@ const LargeProfile = () => {
       toast.success("로그아웃 되었습니다.");
     } catch (error: unknown) {
       console.log(error);
-      toast.error(error?.code);
+      toast.error("잘못된 요청입니다.");
     }
   };
 
@@ -21,10 +23,8 @@ const LargeProfile = () => {
       <div className="flex__box-lg">
         <div className="profile__image" />
         <div>
-          <div className="profile__email">{auth?.currentUser?.email}</div>
-          <div className="profile__name">
-            {auth?.currentUser?.displayName || "사용자"}
-          </div>
+          <div className="profile__email">{user?.email}</div>
+          <div className="profile__name">{user?.displayName || "사용자"}</div>
         </div>
       </div>
       <div

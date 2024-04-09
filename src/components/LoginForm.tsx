@@ -43,7 +43,7 @@ const LoginForm = () => {
       navigate("/");
       toast.success("로그인에 성공했습니다.");
     } catch (e: unknown) {
-      toast.error(error?.code);
+      toast.error("잘못된 요청입니다.");
     }
   };
 
