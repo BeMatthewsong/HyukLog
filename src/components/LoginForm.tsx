@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { app } from "src/firebasApp";
 import { toast } from "react-toastify";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -8,6 +8,8 @@ const LoginForm = () => {
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -38,7 +40,7 @@ const LoginForm = () => {
     try {
       const auth = getAuth(app);
       await signInWithEmailAndPassword(auth, email, password);
-
+      navigate("/");
       toast.success("로그인에 성공했습니다.");
     } catch (e: unknown) {
       toast.error(error?.code);
