@@ -439,3 +439,18 @@ input:checked + .carousel__slide-container .nav label {
 .form__error {
   color: red;
 }
+
+/* loader */
+
+.loader {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 50%;
+  z-index: 9999;
+}
