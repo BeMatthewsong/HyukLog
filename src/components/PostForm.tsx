@@ -65,6 +65,7 @@ const PostForm = () => {
             minute: "2-digit",
           }),
           email: user?.email,
+          uid: user?.uid,
         });
 
         navigate("/");
