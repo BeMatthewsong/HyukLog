@@ -16,12 +16,13 @@ import { toast } from "react-toastify";
 
 interface PostListProps {
   hasNavigation?: boolean;
-  defaultTab: "all" | "mypost";
+  defaultTab: TabType | CategoryType;
 }
 
 export interface PostProps {
   id?: string;
   title: string;
+  category: CategoryType;
   content: string;
   email: string;
   summary: string;
@@ -32,11 +33,16 @@ export interface PostProps {
 
 type TabType = "all" | "mypost";
 
+export type CategoryType = "일상" | "개발" | "재미" | "기타";
+export const CATEGORIES: CategoryType[] = ["일상", "개발", "재미", "기타"];
+
 const PostList = ({
   hasNavigation = true,
   defaultTab = "all",
 }: PostListProps) => {
-  const [activeTab, setActiveTab] = useState<TabType>(defaultTab);
+  const [activeTab, setActiveTab] = useState<TabType | CategoryType>(
+    defaultTab
+  );
   const [posts, setPost] = useState<PostProps[]>([]);
 
   const { user } = useContext(AuthContext);
@@ -53,9 +59,15 @@ const PostList = ({
         where("uid", "==", user.uid),
         orderBy("createdAt", "desc")
       );
-    } else {
-      // 'all' - 모든 글 보여주기
+    } else if (activeTab === "all") {
       postsQuery = query(postsRef, orderBy("createdAt", "desc"));
+    } else {
+      // 카테고리 글
+      postsQuery = query(
+        postsRef,
+        where("category", "==", activeTab),
+        orderBy("createdAt", "desc")
+      );
     }
 
     const datas = await getDocs(postsQuery);
@@ -90,6 +102,19 @@ const PostList = ({
           >
             전체
           </div>
+
+          {CATEGORIES.map((category) => (
+            <div
+              role="presentation"
+              key={category}
+              onClick={() => setActiveTab(category)}
+              className={
+                activeTab === category ? "post__navigation--active" : ""
+              }
+            >
+              {category}
+            </div>
+          ))}
           <div
             role="presentation"
             onClick={() => setActiveTab("mypost")}
@@ -113,15 +138,17 @@ const PostList = ({
               </Link>
               {user?.email === post?.email && (
                 <div className="post__utils-box">
-                  <div
-                    className="post__delete"
-                    onClick={() => handleDelete(post.id as string)}
-                  >
-                    삭제
+                  <div className="post__utils-buttons">
+                    <div
+                      className="post__delete"
+                      onClick={() => handleDelete(post.id as string)}
+                    >
+                      삭제
+                    </div>
+                    <Link to={`/posts/edit/${post?.id}`} className="post__edit">
+                      수정
+                    </Link>
                   </div>
-                  <Link to={`/posts/edit/${post?.id}`} className="post__edit">
-                    수정
-                  </Link>
                 </div>
               )}
             </div>

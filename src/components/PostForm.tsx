@@ -4,13 +4,14 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import AuthContext from "src/contexts/AuthContext";
 import { db } from "src/firebasApp";
-import { PostProps } from "./PostList";
+import { CATEGORIES, CategoryType, PostProps } from "./PostList";
 
 // TODO: 디바운스 추가하기
 const PostForm = () => {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
+  const [category, setCategory] = useState<CategoryType>("일상");
   const [post, setPost] = useState<PostProps | null>(null);
 
   const { user } = useContext(AuthContext);
@@ -19,7 +20,9 @@ const PostForm = () => {
   const params = useParams();
 
   const onChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
 
@@ -32,6 +35,9 @@ const PostForm = () => {
     if (name === "content") {
       setContent(value);
     }
+    if (name === "category") {
+      setCategory(value as CategoryType);
+    }
   };
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,6 +49,7 @@ const PostForm = () => {
         const postRef = doc(db, "posts", post?.id);
         await updateDoc(postRef, {
           title,
+          category,
           summary,
           content,
           // TODO: 며칠 전 추가 (day.js)
@@ -58,6 +65,7 @@ const PostForm = () => {
         // firebase로 데이터 추가
         await addDoc(collection(db, "posts"), {
           title,
+          category,
           summary,
           content,
           createdAt: new Date()?.toLocaleDateString("ko", {
@@ -94,39 +102,60 @@ const PostForm = () => {
       setTitle(post?.title);
       setSummary(post?.summary);
       setContent(post?.content);
+      setCategory(post?.category);
     }
   }, [post]);
 
   return (
-    <form action="/post" method="POST" className="form" onSubmit={onSubmit}>
-      {[
-        { type: "text", category: "title", value: "제목" },
-        { type: "text", category: "summary", value: "요약" },
-        { type: "textarea", category: "content", value: "내용" },
-      ].map((e) => (
-        <div className="form__block">
-          {/* htmlFor에 input의 아이디나 네임을 적어 인풋과 연결합니다. */}
-          <label htmlFor={e.category}>{e.value}</label>
-          {e.type === "text" ? (
-            <input
-              type={e.type}
-              name={e.category}
-              id={e.category}
-              required
-              onChange={onChange}
-              value={`${e.category === "title" ? title : summary}`}
-            />
-          ) : (
-            <textarea
-              name={e.category}
-              id={e.category}
-              required
-              onChange={onChange}
-              value={content}
-            />
-          )}
-        </div>
-      ))}
+    <form onSubmit={onSubmit} className="form">
+      <div className="form__block">
+        <label htmlFor="title">제목</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          required
+          onChange={onChange}
+          value={title}
+        />
+      </div>
+      <div className="form__block">
+        <label htmlFor="category">카테고리</label>
+        <select
+          name="category"
+          id="category"
+          onChange={onChange}
+          defaultValue={category}
+        >
+          <option value="">카테고리를 선택해주세요</option>
+          {CATEGORIES?.map((category) => (
+            <option value={category} key={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="form__block">
+        <label htmlFor="summary">요약</label>
+        <input
+          type="text"
+          name="summary"
+          id="summary"
+          required
+          onChange={onChange}
+          value={summary}
+        />
+      </div>
+      <div className="form__block">
+        <label htmlFor="content">내용</label>
+        <textarea
+          name="content"
+          id="content"
+          required
+          onChange={onChange}
+          value={content}
+        />
+      </div>
       <div className="form__block">
         <input
           type="submit"

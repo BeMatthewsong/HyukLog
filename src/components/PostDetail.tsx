@@ -21,6 +21,8 @@ const PostDetail = () => {
     }
   };
 
+  console.log(post);
+
   const handleDelete = async () => {
     const confirm = window.confirm("해당 게시글을 삭제하시겠습니까?");
     if (confirm && post && post.id) {
@@ -41,11 +43,16 @@ const PostDetail = () => {
           <div className="post__title">{post?.title}</div>
           <SmallProfile authorName={post?.email} postDate={post?.createdAt} />
           <div className="post__utils-box">
-            <div className="post__delete" onClick={handleDelete}>
-              삭제
-            </div>
-            <div className="post__edit">
-              <Link to={`/posts/edit/${post?.id}`}>수정</Link>
+            {post?.category && (
+              <div className="post__category">{post?.category}</div>
+            )}
+            <div className="post__utils-buttons">
+              <div className="post__delete" onClick={handleDelete}>
+                삭제
+              </div>
+              <div className="post__edit">
+                <Link to={`/posts/edit/${post?.id}`}>수정</Link>
+              </div>
             </div>
           </div>
           <div className="post__text post__text--pre-wrap">{post?.content}</div>

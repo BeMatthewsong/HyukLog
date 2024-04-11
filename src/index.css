@@ -127,19 +127,33 @@ footer a:focus {
 
 .post__utils-box {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: 8px;
   flex-direction: row-reverse;
   font-size: 14px;
   color: gray;
 }
 
+.post__utils-buttons {
+  display: flex;
+  gap: 20px;
+}
+
 .post__delete {
   cursor: pointer;
+  font-weight: 600;
+}
+
+.post__edit a {
+  text-decoration: none;
+  color: gray;
+  font-weight: 600;
 }
 
 .post__delete:hover,
 .post__delete:focus {
-  color: black;
+  color: red;
 }
 
 .post__edit:hover,
@@ -147,11 +161,6 @@ footer a:focus {
 .post__edit a:hover,
 .post__edit a:focus {
   color: black;
-}
-
-.post__edit a {
-  text-decoration: none;
-  color: gray;
 }
 
 .post__no-post {
@@ -185,6 +194,21 @@ footer a:focus {
 
 .post__text--pre-wrap {
   white-space: pre-wrap;
+}
+
+.post__category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 30px;
+  color: skyblue;
+  border: 1px solid skyblue;
+  background: white;
+  padding: 0px 2px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 /* profile */
@@ -450,6 +474,14 @@ input:checked + .carousel__slide-container .nav label {
 
 .form__error {
   color: red;
+}
+
+.form select {
+  border: 1px solid lightgray;
+  max-width: 680px;
+  height: 40px;
+  padding: 0px 10px;
+  border-radius: 0.3rem;
 }
 
 /* loader */
