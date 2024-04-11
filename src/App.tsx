@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Router from "./components/Router";
-import { app } from "./firebasApp";
+import { app, db } from "./firebasApp";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
