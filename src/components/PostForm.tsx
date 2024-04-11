@@ -45,7 +45,11 @@ const PostForm = () => {
           title,
           summary,
           content,
-          updateDoc: new Date()?.toLocaleDateString(),
+          // TODO: 며칠 전 추가 (day.js)
+          updateDoc: new Date()?.toLocaleDateString("ko", {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
           uid: user?.uid,
         });
         toast.success("게시글 수정이 성공했습니다.");
@@ -56,7 +60,10 @@ const PostForm = () => {
           title,
           summary,
           content,
-          createdAt: new Date()?.toLocaleDateString(),
+          createdAt: new Date()?.toLocaleDateString("ko", {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
           email: user?.email,
         });
 

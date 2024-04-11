@@ -1,7 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import SmallProfile from "./SmallProfile";
 import { useContext, useEffect, useState } from "react";
-import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "src/firebasApp";
 import AuthContext from "src/contexts/AuthContext";
 import { toast } from "react-toastify";
@@ -31,8 +38,10 @@ const PostList = ({ hasNavigation = true }: PostListProps) => {
   const navigate = useNavigate();
 
   const getPosts = async () => {
-    const datas = await getDocs(collection(db, "posts"));
     setPost([]);
+    const postsRef = collection(db, "posts");
+    const postsQuery = query(postsRef, orderBy("createdAt", "desc"));
+    const datas = await getDocs(postsQuery);
     datas?.forEach((doc) => {
       const dataObj = { ...doc.data(), id: doc.id };
       setPost((prev) => [...prev, dataObj as PostProps]);
