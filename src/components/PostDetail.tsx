@@ -5,7 +5,7 @@ const PostDetail = () => {
   return (
     <div className="post__detail">
       <div className="post__title">제목</div>
-      <SmallProfile />
+      <SmallProfile authorName={""} postDate={""} />
       <div className="post__utils-box">
         <div className="post__delete">삭제</div>
         <div className="post__edit">

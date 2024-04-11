@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import AuthContext from "src/contexts/AuthContext";
 import { db } from "src/firebasApp";
 
+// TODO: 디바운스 추가하기
 const PostForm = () => {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
