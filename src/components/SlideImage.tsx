@@ -1,4 +1,5 @@
 interface SlideImageProps {
+  key: string;
   imageSrc: string;
   alt?: string;
   activeImage: number;

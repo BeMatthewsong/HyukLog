@@ -27,6 +27,7 @@ const Carousel = () => {
       <ul className="carousel__slides">
         {imageDatas.map((e, index) => (
           <SlideImage
+            key={e.alt}
             imageSrc={e.src}
             alt={e.alt}
             activeImage={activeImage}
@@ -37,6 +38,7 @@ const Carousel = () => {
         <div className="carousel__dots">
           {imageDatas.map((_, index) => (
             <label
+              key={index}
               onClick={() => setActiveImage(index)}
               className="carousel__dot"
               id={`img-dot-${index}`}
