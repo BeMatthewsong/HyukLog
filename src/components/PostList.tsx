@@ -9,8 +9,8 @@ interface PostListProps {
   hasNavigation?: boolean;
 }
 
-interface PostProps {
-  id: string;
+export interface PostProps {
+  id?: string;
   title: string;
   content: string;
   email: string;
@@ -60,15 +60,15 @@ const PostList = ({ hasNavigation = true }: PostListProps) => {
       )}
       <div className="post-list">
         {posts?.length > 0 ? (
-          posts?.map((post, index) => (
+          posts?.map((post) => (
             <div key={post.id} className="post__box">
-              <Link to={`/posts/${index}`}>
+              <Link to={`/posts/${post?.id}`}>
                 <SmallProfile
                   authorName={post.email}
                   postDate={post.createdAt}
                 />
                 <div className="post__title">{post.title}</div>
-                <div className="post__text">{post.content}</div>
+                <div className="post__text">{post.summary}</div>
               </Link>
               {user?.email === post?.email && (
                 <div className="post__utils-box">
