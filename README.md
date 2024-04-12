@@ -9,7 +9,7 @@
 
 <br />
 
-# Dev Stack
+# ⚒️ Dev Stack
 
 <p>
 
@@ -21,7 +21,7 @@
 </p>
 </br>
 
-# Features
+# 📨 Features
 
 <br />
 
@@ -35,7 +35,7 @@
 
 <br />
 
-# Contributting
+# 🙌 Contributting
 
 ```
 git clone https://github.com/BeMatthewsong/HyukLog.git .
@@ -45,6 +45,15 @@ pnpm install
 pnpm dev
 ```
 
-# Information
+# 📚 What I Learned
+
+- Firebase를 통한 유저 기능 구현
+- Firestore을 이용한 데이터베이스
+- 상대관리 라이브러리 대신 Context 최대한 사용해보기
+- lazy initialization을 통한 useState 초깃값 최적화
+- 객체를 이용한 데이터 리팩토링
+- Firebase 배포
+
+# 📄 Information
 
 ##### 개발 기간: 4/6 - 4/12
