@@ -16,7 +16,7 @@ import { toast } from "react-toastify";
 
 interface PostListProps {
   hasNavigation?: boolean;
-  defaultTab: TabType | CategoryType;
+  defaultTab?: TabType | CategoryType;
 }
 export interface CommentInterface {
   content: string;
@@ -99,7 +99,7 @@ const PostList = ({
   }, [activeTab]);
 
   return (
-    <>
+    <div className="post__main">
       {hasNavigation && (
         <div className="post__navigation">
           <div
@@ -110,7 +110,7 @@ const PostList = ({
             전체
           </div>
 
-          {CATEGORIES.map((category) => (
+          {/* {CATEGORIES.map((category) => (
             <div
               role="presentation"
               key={category}
@@ -121,7 +121,7 @@ const PostList = ({
             >
               {category}
             </div>
-          ))}
+          ))} */}
           <div
             role="presentation"
             onClick={() => setActiveTab("mypost")}
@@ -164,7 +164,7 @@ const PostList = ({
           <div className="post__no-post">게시글이 없습니다.</div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

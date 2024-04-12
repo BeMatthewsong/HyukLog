@@ -4,12 +4,12 @@ const Header = () => {
   return (
     <header>
       <Link to="/" className="header__logo">
-        HyukLog
+        반짝
       </Link>
       <div>
-        <Link to="/posts/new">글쓰기</Link>
-        <Link to="/posts">게시글</Link>
-        <Link to="/profile">프로필</Link>
+        <Link to="/posts/new">Post</Link>
+        <Link to="/posts">Discover</Link>
+        <Link to="/profile">Profile</Link>
       </div>
     </header>
   );

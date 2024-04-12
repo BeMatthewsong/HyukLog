@@ -69,12 +69,14 @@ footer a:focus {
 /* post navigation */
 .post__navigation {
   display: flex;
+  justify-content: center;
   gap: 12px;
   margin: 0 auto;
   font-size: 16px;
   color: gray;
   cursor: pointer;
   padding: 48px 20px 0px 20px;
+  margin-bottom: 50px;
 }
 
 .post__navigation--active {
@@ -204,6 +206,8 @@ footer a:focus {
 
 .post__text--pre-wrap {
   white-space: pre-wrap;
+  min-height: 200px;
+  margin: 20px 0px;
 }
 
 .post__category {
@@ -634,23 +638,52 @@ input:checked + .carousel__slide-container .nav label {
   color: white;
 }
 
-.dark a:hover,
-.dark a:focus .dark .post__text,
+.dark .post__text,
 .dark .post__text--pre-wrap,
 .dark .profile__email,
 .dark.post__date,
 .dark .form__block,
 .dark .comment__date,
-.dark .comment__delete {
+.dark .comment__delete,
+.dark .footer__text {
   color: lightgray;
 }
 
 .dark .comment__delete:hover,
-.dark .comment__delete:focus {
-  color: white;
+.dark .comment__delete:focus,
+.dark a:hover,
+.dark a:focus,
+.dark .post__delete:hover,
+.dark .post__delete:focus {
+  color: aquamarine;
 }
 
 .dark footer,
 .dark header {
   background-color: #111827;
+}
+
+.dark .form__block input,
+.dark .form__block select,
+.dark .form__block textarea {
+  background-color: #1e2937;
+  color: white;
+}
+
+.dark .post__category {
+  background-color: #1e2937;
+  color: skyblue;
+}
+
+.dark .form__block .form__btn--submit {
+  background-color: #2563eb;
+}
+
+.dark .form__block .form__btn--submit:hover {
+  background-color: #1945a4;
+}
+
+.dark .profile__logout:hover {
+  color: aquamarine;
+  font-weight: 600;
 }
