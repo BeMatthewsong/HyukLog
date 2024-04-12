@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
-import Router from "./components/Router";
-import { app, db } from "./firebasApp";
-import { onAuthStateChanged, getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useContext, useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "./components/Loader";
+import Router from "./components/Router";
+import { ThemeContext } from "./contexts/ThemeContext";
+import { app } from "./firebasApp";
 
 function App() {
+  const context = useContext(ThemeContext);
   const auth = getAuth(app);
   // auth를 체크하기 전에 로더를 띄워주기 위한 용도
   const [init, setInit] = useState(false);
@@ -27,10 +29,10 @@ function App() {
   }, [auth]);
 
   return (
-    <>
+    <div className={context.theme === "light" ? "light" : "dark"}>
       <ToastContainer />
       {init ? <Router isAuthenticated={isAuthenticated} /> : <Loader />}
-    </>
+    </div>
   );
 }
 
