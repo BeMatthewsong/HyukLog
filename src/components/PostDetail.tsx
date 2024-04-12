@@ -22,8 +22,6 @@ const PostDetail = () => {
     }
   };
 
-  console.log(post);
-
   const handleDelete = async () => {
     const confirm = window.confirm("해당 게시글을 삭제하시겠습니까?");
     if (confirm && post && post.id) {
@@ -57,7 +55,7 @@ const PostDetail = () => {
             </div>
           </div>
           <div className="post__text post__text--pre-wrap">{post?.content}</div>
-          <Comments />
+          <Comments post={post} getPost={getPost} />
         </>
       ) : (
         <Loader />
