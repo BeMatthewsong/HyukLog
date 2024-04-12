@@ -53,6 +53,8 @@ pnpm dev
 - lazy initialization을 통한 useState 초깃값 최적화
 - 객체를 이용한 데이터 리팩토링
 - Firebase 배포
+- localstorage에 대한 이해
+- toastify 사용
 
 # 📄 Information
 
